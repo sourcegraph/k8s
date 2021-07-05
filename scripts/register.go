@@ -54,9 +54,6 @@ var apiGroups = []APIGroup{
 				{"MutatingWebhookConfiguration", "", NotNamespaced},
 				{"ValidatingWebhookConfiguration", "", NotNamespaced},
 			},
-			"v1alpha1": []Resource{
-				{"InitializerConfiguration", "", NotNamespaced},
-			},
 		},
 	},
 	{
@@ -271,13 +268,9 @@ var apiGroups = []APIGroup{
 		},
 	},
 	{
-		Package: "settings",
-		Group:   "settings.k8s.io",
-		Versions: map[string][]Resource{
-			"v1alpha1": []Resource{
-				{"PodPreset", "", 0},
-			},
-		},
+		Package:  "settings",
+		Group:    "settings.k8s.io",
+		Versions: map[string][]Resource{},
 	},
 	{
 		Package: "storage",

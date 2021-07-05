@@ -1,4 +1,4 @@
-KUBE_VERSION=1.13.2
+KUBE_VERSION=1.20.8
 
 build:
 	go build -v ./...
@@ -12,7 +12,7 @@ test-examples:
 	done
 
 .PHONY: generate
-generate: _output/kubernetes _output/bin/protoc _output/bin/gomvpkg _output/bin/protoc-gen-gofast _output/src/github.com/golang/protobuf
+generate: _output/kubernetes _output/bin/protoc _output/bin/gomvpkg _output/bin/protoc-gen-go _output/src/github.com/golang/protobuf
 	GO111MODULE=off ./scripts/generate.sh
 	GO111MODULE=off go run scripts/register.go
 	cp scripts/json.go.partial apis/meta/v1/json.go
@@ -21,12 +21,12 @@ generate: _output/kubernetes _output/bin/protoc _output/bin/gomvpkg _output/bin/
 verify-generate: generate
 	./scripts/git-diff.sh
 
-_output/bin/protoc-gen-gofast:
+_output/bin/protoc-gen-go:
 	GO111MODULE=off ./scripts/go-install.sh \
-		https://github.com/gogo/protobuf \
-		github.com/gogo/protobuf \
-		github.com/gogo/protobuf/protoc-gen-gofast \
-		tags/v0.5
+		https://github.com/protocolbuffers/protobuf-go \
+		google.golang.org/protobuf \
+		google.golang.org/protobuf/cmd/protoc-gen-go \
+		tags/v1.27.1
 
 _output/bin/gomvpkg:
 	GO111MODULE=off ./scripts/go-install.sh \
@@ -36,7 +36,7 @@ _output/bin/gomvpkg:
 		fbec762f837dc349b73d1eaa820552e2ad177942
 
 _output/src/github.com/golang/protobuf:
-	git clone https://github.com/golang/protobuf _output/src/github.com/golang/protobuf
+	# git clone https://google.golang.org/protobuf _output/src/google.golang.org/protobuf
 
 _output/bin/protoc:
 	./scripts/get-protoc.sh

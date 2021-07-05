@@ -1,10 +1,11 @@
 #!/bin/bash -e
 
 TEMPDIR=$(mktemp -d)
-mkdir -p $TEMPDIR/src/github.com/golang
-ln -s $PWD/_output/src/github.com/golang/protobuf $TEMPDIR/src/github.com/golang/protobuf
+mkdir -p $TEMPDIR/src/google.golang.org
+ln -s $PWD/_output/src/google.golang.org/protobuf $TEMPDIR/src/google.golang.org/protobuf
 function cleanup {
-    unlink $TEMPDIR/src/github.com/golang/protobuf
+    # echo $TEMPDIR
+    unlink $TEMPDIR/src/google.golang.org/protobuf
     rm -rf $TEMPDIR
 }
 trap cleanup EXIT
@@ -21,13 +22,26 @@ for REPO in "${REPOS[@]}"; do
     rsync -a --prune-empty-dirs --include '*/' --include '*.proto' --exclude '*' $SOURCE $TARGET
 done
 
+function fix_option {
+    filename=$1
+    dirname=${filename%/*}
+    pkgname="k8s.io/${dirname#*k8s.io/}"
+    vername=${pkgname##*/}
+    script="/option go_package/s#${vername}#${pkgname}#"
+    sed -i '' "${script}" $1
+}
+
+export -f fix_option
+find $TEMPDIR/src/k8s.io -name '*.proto' -exec bash -c 'fix_option "${1}"' -- {} \;
+
 # Remove API groups that aren't actually real
 rm -r $TEMPDIR/src/k8s.io/apimachinery/pkg/apis/testapigroup
 
 cd $TEMPDIR/src
 for FILE in $( find . -type f ); do
-    protoc --gofast_out=. $FILE
+    protoc --go_out=. $FILE
 done
+grep -r -h go_package $TEMPDIR/src
 rm $( find . -type f -name '*.proto' );
 cd -
 
