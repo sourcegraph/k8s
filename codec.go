@@ -68,7 +68,7 @@ func unmarshalPB(b []byte, msg proto.Message) error {
 	}
 
 	u := new(runtime.Unknown)
-	if err := u.Unmarshal(b[len(magicBytes):]); err != nil {
+	if err := proto.Unmarshal(b[len(magicBytes):], u); err != nil {
 		return fmt.Errorf("unmarshal unknown: %v", err)
 	}
 	return proto.Unmarshal(u.Raw, msg)
@@ -86,7 +86,7 @@ func marshalPB(obj interface{}) ([]byte, error) {
 
 	// The URL path informs the API server what the API group, version, and resource
 	// of the object. We don't need to specify it here to talk to the API server.
-	body, err := (&runtime.Unknown{Raw: payload}).Marshal()
+	body, err := proto.Marshal(&runtime.Unknown{Raw: payload})
 	if err != nil {
 		return nil, err
 	}
