@@ -55,6 +55,7 @@ function mvpkg {
 }
 
 mvpkg apiextensions-apiserver/pkg/apis/apiextensions/v1beta1 apis/apiextensions/v1beta1
+mvpkg apiextensions-apiserver/pkg/apis/apiextensions/v1 apis/apiextensions/v1
 mvpkg apimachinery/pkg/api/resource apis/resource
 mvpkg apimachinery/pkg/apis/meta apis/meta
 mvpkg apimachinery/pkg/runtime runtime
