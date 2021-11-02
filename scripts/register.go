@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package main
@@ -61,6 +62,9 @@ var apiGroups = []APIGroup{
 		Group:   "apiextensions.k8s.io",
 		Versions: map[string][]Resource{
 			"v1beta1": []Resource{
+				{"CustomResourceDefinition", "", NotNamespaced},
+			},
+			"v1": {
 				{"CustomResourceDefinition", "", NotNamespaced},
 			},
 		},
