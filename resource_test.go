@@ -4,10 +4,10 @@ import (
 	"testing"
 	"time"
 
-	metav1 "github.com/ericchiang/k8s/apis/meta/v1"
+	metav1 "github.com/sourcegraph/k8s/apis/meta/v1"
 )
 
-// Redefine types since all API groups import "github.com/ericchiang/k8s"
+// Redefine types since all API groups import "github.com/sourcegraph/k8s"
 // We can't use them here because it'll create a circular import cycle.
 
 type Pod struct {

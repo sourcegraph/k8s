@@ -12,9 +12,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ericchiang/k8s"
-	corev1 "github.com/ericchiang/k8s/apis/core/v1"
-	metav1 "github.com/ericchiang/k8s/apis/meta/v1"
+	"github.com/sourcegraph/k8s"
+	corev1 "github.com/sourcegraph/k8s/apis/core/v1"
+	metav1 "github.com/sourcegraph/k8s/apis/meta/v1"
 )
 
 const skipMsg = `
@@ -214,7 +214,7 @@ func TestDefaultNamespace(t *testing.T) {
 }
 
 func TestDelete(t *testing.T) {
-    t.Skip("this test requires a controller manager to run, see issue #95")
+	t.Skip("this test requires a controller manager to run, see issue #95")
 
 	withNamespace(t, func(client *k8s.Client, namespace string) {
 		cm := &corev1.ConfigMap{

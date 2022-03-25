@@ -24,8 +24,8 @@
 package v1beta1
 
 import (
-	"github.com/ericchiang/k8s/apis/meta/v1"
-	_ "github.com/ericchiang/k8s/runtime/schema"
+	"github.com/sourcegraph/k8s/apis/meta/v1"
+	_ "github.com/sourcegraph/k8s/runtime/schema"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

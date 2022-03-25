@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package kubeconfig
@@ -6,7 +7,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/ericchiang/k8s"
+	"github.com/sourcegraph/k8s"
 
 	"github.com/ghodss/yaml"
 )

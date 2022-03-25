@@ -24,11 +24,11 @@
 package v1
 
 import (
-	v11 "github.com/ericchiang/k8s/apis/core/v1"
-	"github.com/ericchiang/k8s/apis/meta/v1"
-	"github.com/ericchiang/k8s/apis/resource"
-	_ "github.com/ericchiang/k8s/runtime"
-	_ "github.com/ericchiang/k8s/runtime/schema"
+	v11 "github.com/sourcegraph/k8s/apis/core/v1"
+	"github.com/sourcegraph/k8s/apis/meta/v1"
+	"github.com/sourcegraph/k8s/apis/resource"
+	_ "github.com/sourcegraph/k8s/runtime"
+	_ "github.com/sourcegraph/k8s/runtime/schema"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

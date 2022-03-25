@@ -1,4 +1,4 @@
-module github.com/ericchiang/k8s
+module github.com/sourcegraph/k8s
 
 go 1.16
 

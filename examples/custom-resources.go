@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package customresources
@@ -6,8 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/ericchiang/k8s"
-	metav1 "github.com/ericchiang/k8s/apis/meta/v1"
+	"github.com/sourcegraph/k8s"
+	metav1 "github.com/sourcegraph/k8s/apis/meta/v1"
 )
 
 func init() {

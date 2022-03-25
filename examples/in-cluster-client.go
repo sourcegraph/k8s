@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package nodes
@@ -7,8 +8,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ericchiang/k8s"
-	corev1 "github.com/ericchiang/k8s/apis/core/v1"
+	"github.com/sourcegraph/k8s"
+	corev1 "github.com/sourcegraph/k8s/apis/core/v1"
 )
 
 func listNodes() {

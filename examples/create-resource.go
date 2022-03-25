@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package configmaps
@@ -5,9 +6,9 @@ package configmaps
 import (
 	"context"
 
-	"github.com/ericchiang/k8s"
-	"github.com/ericchiang/k8s/apis/core/v1"
-	metav1 "github.com/ericchiang/k8s/apis/meta/v1"
+	"github.com/sourcegraph/k8s"
+	"github.com/sourcegraph/k8s/apis/core/v1"
+	metav1 "github.com/sourcegraph/k8s/apis/meta/v1"
 )
 
 func createConfigMap(client *k8s.Client, name string, values map[string]string) error {
